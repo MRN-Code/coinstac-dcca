@@ -1,6 +1,2 @@
-matplotlib
-nilearn
-numba
-scikit-learn
-statsmodels
+numpy
 ujson

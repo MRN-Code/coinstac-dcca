@@ -1,20 +1,20 @@
 {
   "meta": {
-    "name": "MSLR test",
+    "name": "Decentralized Canonical Correlation Analysis",
     "version": "v1.0.0",
     "repository": "https:\/\/github.com\/MRN-Code\/coinstac-mslr",
-    "description": "Multi-shot Logistic Regression on Iris Data"
+    "description": "Decentralized Canonical Correlation Analysis"
   },
   "computation": {
     "type": "docker",
-    "dockerImage": "mslr-test",
+    "dockerImage": "dcca",
     "command": [
       "python",
       "\/computation\/local.py"
     ],
     "remote": {
       "type": "docker",
-      "dockerImage": "mslr-test",
+      "dockerImage": "dcca",
       "command": [
         "python",
         "\/computation\/remote.py"

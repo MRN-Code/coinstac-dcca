@@ -1,27 +1,23 @@
 import json
 import numpy as np
-import os
-import pandas as pd
 import sys
-
+from ancillary import list_recursive
 
 def remote_0(args):
-    pass
+    input_list = args["input"]
+    myval = np.mean([input_list[site]["output_val"] for site in input_list])
 
-def remote_1(args):
-    pass
+    computation_output = {"output": {"output_list": myval}, "success": True}
+    return json.dumps(computation_output)
 
 
 if __name__ == '__main__':
 
     parsed_args = json.loads(sys.stdin.read())
-    phase_key = list(reg.listRecursive(parsed_args, 'computation_phase'))
+    phase_key = list(list_recursive(parsed_args, 'computation_phase'))
 
-    if 'remote_0' in phase_key:
-        computation_output = local_1(parsed_args)
-        sys.stdout.write(computation_output)
-    elif 'remote_1' in phase_key:
-        computation_output = local_2(parsed_args)
+    if 'local_0' in phase_key:
+        computation_output = remote_0(parsed_args)
         sys.stdout.write(computation_output)
     else:
         raise ValueError("Error occurred at Local")
