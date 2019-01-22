@@ -1,4 +1,4 @@
-import json
+import ujson as json
 import numpy as np
 import sys
 from ancillary import list_recursive
