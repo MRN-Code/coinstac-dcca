@@ -8,11 +8,15 @@ from ancillary import list_recursive
 def local_0(args):
     X_file_name = args["input"]["file_names"]["X_file"]
     Y_file_name = args["input"]["file_names"]["Y_file"]
-
+    
     X = np.loadtxt(os.path.join(args['state']['baseDirectory'], X_file_name), delimiter = ',')
     Y = np.loadtxt(os.path.join(args['state']['baseDirectory'], Y_file_name), delimiter = ',')
-    
-    covar = X.dot(Y.T)
+
+    #TODO: Check for normalized X and Y
+
+    # Assuming X and Y are normalized    
+    if X.shape[1] == Y.shape[1]:
+        covar = X.dot(Y.T)/X.shape[1]
     
     output_dict = {"covar": covar.tolist(), 'computation_phase': 'local_0'}
     cache_dict = {}
