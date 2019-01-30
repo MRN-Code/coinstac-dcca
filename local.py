@@ -16,7 +16,7 @@ def local_0(args):
 
     # Assuming X and Y are normalized    
     if X.shape[1] == Y.shape[1]:
-        covar = X.dot(Y.T)/X.shape[1]
+        covar = X.T.dot(Y)/X.shape[1]
     
     output_dict = {"covar": covar.tolist(), 'computation_phase': 'local_0'}
     cache_dict = {}
